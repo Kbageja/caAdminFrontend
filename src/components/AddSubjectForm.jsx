@@ -7,7 +7,7 @@ export default function AddSubjectForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/addSubject", {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/addSubject`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ca_type: caType, name }),

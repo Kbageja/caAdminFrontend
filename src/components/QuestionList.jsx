@@ -24,7 +24,7 @@ export default function QuestionList() {
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/getQuestions")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_API}/getQuestions`)
       .then((res) => res.json())
       .then(setQuestions);
   }, []);

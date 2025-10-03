@@ -14,26 +14,26 @@ export default function AddQuestionForm() {
   const [subtopics, setSubtopics] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/getSubject")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_API}/getSubject`)
       .then((res) => res.json())
       .then(setSubjects);
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/getTopics")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_API}/getTopics`)
       .then((res) => res.json())
       .then(setTopics);
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/getSubtopics")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_API}/getSubtopics`)
       .then((res) => res.json())
       .then(setSubtopics);
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/addQuestion", {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/addQuestion`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

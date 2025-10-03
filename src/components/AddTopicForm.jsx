@@ -8,14 +8,14 @@ export default function AddTopicForm() {
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/getSubject")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_API}/getSubject`)
       .then((res) => res.json())
       .then(setSubjects);
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/addTopic", {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/addTopic`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
